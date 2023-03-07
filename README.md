@@ -1,17 +1,17 @@
 # Module 12 Object-Oriented Programming: Team Profile Generator
 
-## Your Task
+## Description
 
-Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
+This is a working Node.js command-line application. It takes in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. 
+Tests are run to make sure the code is robust.
 
 ## User Story
 
-As a manager a user want to generate a webpage that displays my team's basic info so that a user have quick access to their emails and GitHub profiles.
+As a manager, I want to generate a webpage that displays my team's basic info so that a user has quick access to their emails and GitHub profiles.
 
-## Instructions
+## Further details
  
-* Create a command-line application that accepts user input using the provided starter code.   
-  * Create classes for each team member provided and export them. The tests for these classes (in the `_tests_` directory) must ALL pass.     
+     
     * The first class is an `Employee` parent class with the following properties and methods:       
       * `name`
       * `id`
@@ -20,20 +20,20 @@ As a manager a user want to generate a webpage that displays my team's basic inf
       * `getId()`
       * `getEmail()`
       * `getRole()`&mdash;returns `'Employee'`     
-    * The other three classes will extend `Employee`.      
-    * In addition to `Employee`'s properties and methods, `Manager` will also have the following:
+    * The other three classes extend `Employee`.      
+    * In addition to `Employee`'s properties and methods, `Manager` also has the following:
       * `officeNumber`
       * `getRole()`&mdash;overridden to return `'Manager'`
-    * In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
+    * In addition to `Employee`'s properties and methods, `Engineer` also has the following:
       * `github`&mdash;GitHub username
       * `getGithub()`
       * `getRole()`&mdash;overridden to return `'Engineer'`
-    * In addition to `Employee`'s properties and methods, `Intern` will also have the following:
+    * In addition to `Employee`'s properties and methods, `Intern` also has the following:
       * `school`
       * `getSchool()`
       * `getRole()`&mdash;overridden to return `'Intern'`
     * Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format.   
-  * Write code in `index.js` that uses inquirer to gather information about the development team members and creates objects for each team member using the correct classes as blueprints.
+  * The program uses inquirer to gather information about the development team members and creates objects for each team member using the correct classes as blueprints.
     * When a user starts the application then they are prompted to enter the **team manager**’s:
       * Name
       * Employee ID
@@ -54,11 +54,11 @@ As a manager a user want to generate a webpage that displays my team's basic inf
       * Email
       * School
     * When a user decides to finish building their team then they exit the application, and the HTML is generated.
-  * Call the `render` function (provided for you) and pass in an array containing all employee objects; 
+  * The`render` function (provided for you) and pass in an array containing all employee objects; 
     * The `render` function will generate and return a block of HTML including templated divs for each employee!
-  * Create an HTML file using the HTML returned from the `render` function. 
-    * Write it to a file named `team.html` in the `output` folder. 
-    * You can use the provided variable `outputPath` to target this location.
+  * An HTML file is created using the HTML returned from the `render` function. 
+    * It is written to a file named `team.html` in the `output` folder. 
+   
 
 ---
 
