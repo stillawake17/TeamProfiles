@@ -14,105 +14,114 @@ const render = require("./src/page-template.js");
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
 inquirer
-  .prompt([
-    {
-      type: 'input',
-      name: 'name',
-      message: 'What is your team manager\'s name?',
-    },
-    {
-      type: 'input',
-      name: 'id',
-      message: 'What is their ID?',
-    },
-   
-   
-    {
-        type: 'input',
-        name: 'officeNumber',
-        message: 'what is their office number?',
-      },
-    
-    {   type: 'input',
-        name: 'email',
-        message: 'Please add their email address: ',
-      },
-      {
-        type: 'list',
-        message: 'What do you want to do next?',
-        name: 'Employee',
-        choices: ['Engineer', 'Intern', 'Manager', 'End process'],
-      },
-        ]).then(answers => {
-              if (answers.Employee === 'Engineer') {
-                        inquirer.prompt([
-                              {
-                              type: 'input',
-                              name: 'name',
-                              message:'What is their name?',
-                              },
-                              {
-                                type: 'input',
-                                name: 'id',
-                                message: 'What is their ID?',
-                              },
-                              {
-                                type: 'input',
-                                name: 'email',
-                                message: 'What is their email address?',
-                              },
-                              {
-                                type: 'input',
-                                name: 'gitHub',
-                                message: 'What is their Github Username?',
-                              }
-                      ])
-                      .then((data) => {
-                        const dataRender = render(data);
-                        
-                     
-                        fs.writeFile(outputPath, dataRender, (err) =>
-                          err ? console.log(err) : console.log('Success!')
-                        );
-                      });
-           } else if (answers.Employee === 'Intern') {
-                        inquirer.prompt([
+    .prompt([
         {
             type: 'input',
             name: 'name',
-            message: 'What is the intern\s name?',
+            message: 'What is your team manager\'s name?',
         },
         {
-          type: 'input',
-          name: 'id',
-          message: 'What is the intern\s id?',
+            type: 'input',
+            name: 'id',
+            message: 'What is their ID?',
         },
         {
-        type: 'input',
-        name: 'email',
-        message: 'What is the intern\s email address?',
+            type: 'input',
+            name: 'officeNumber',
+            message: 'what is their office number?',
         },
         {
-      type: 'input',
-      name: 'school',
-      message: 'What is the intern\s school?',
-            }
-          ]).then((data) => {
-            const dataRender = render(data);
-            
-         
-            fs.writeFile(outputPath, dataRender, (err) =>
-              err ? console.log(err) : console.log('Success!')
-            );
-          });;
-} else {
-  console.log("you have chosen to leave");
-}})
-.then((data) => {
-    const dataRender = render(data);
+            type: 'input',
+            name: 'email',
+            message: 'Please add their email address: ',
+        },
+        {
+            type: 'list',
+            message: 'What do you want to do next?',
+            name: 'Employee',
+            choices: ['Engineer', 'Intern', 'Manager', 'End process'],
+        },
+    ])
+    .then(answers => {
+        if (answers.Employee === 'Engineer') {
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'name',
+                    message: 'What is their name?',
+                },
+                {
+                    type: 'input',
+                    name: 'id',
+                    message: 'What is their ID?',
+                },
+                {
+                    type: 'input',
+                    name: 'email',
+                    message: 'What is their email address?',
+                },
+                {
+                    type: 'input',
+                    name: 'gitHub',
+                    message: 'What is their Github Username?',
+                }
+            ]).then((data) => {
+                const dataRender = render(data);
+                fs.writeFile(outputPath, dataRender, (err) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('Success!');
+                        const dataRender = render(data);
+                        fs.writeFile(outputPath, dataRender, (err) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log('Success!');
+                            }
+                        });
+                    }
+                });
+            });
+        } else if (answers.Employee === 'Intern') {
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'name',
+                    message: 'What is the intern\s name?',
+                },
+                {
+                    type: 'input',
+                    name: 'id',
+                    message: 'What is the intern\s id?',
+                },
+                {
+                    type: 'input',
+                    name: 'email',
+                    message: 'What is the intern\s email address?',
+                },
+                {
+                    type: 'input',
+                    name: 'school',
+                    message: 'What is the intern\s school?',
+                }
+            ]).then((data) => {
+                const dataRender = render(data);
+                fs.writeFile(outputPath, dataRender, (err) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('Success!');
+                        const dataRender = render(data);
+                        fs.writeFile(outputPath, dataRender, (err) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log('Success!');
+                            }
+                        });
+                    }
+                });
+            });
+     }   });
     
- 
-    fs.writeFile(outputPath, dataRender, (err) =>
-      err ? console.log(err) : console.log('Success!')
-    );
-  });
