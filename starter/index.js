@@ -18,41 +18,47 @@ inquirer
     {
       type: 'input',
       name: 'name',
-      message: 'What is your name?',
+      message: 'What is your team manager\'s name?',
     },
     {
       type: 'input',
       name: 'id',
-      message: 'What is your ID?',
+      message: 'What is their ID?',
     },
-    {
-      type: 'input',
-      name: 'gitHub',
-      message: 'what is your GitHub username?',
-    },
-    {
-      type: 'checkbox',
-      message: 'What is your role?',
-      name: 'Employee',
-      choices: ['Engineer', 'Intern', 'Manager'],
-    },
+   
+   
     {
         type: 'input',
         name: 'officeNumber',
-        message: 'what is your office number?',
+        message: 'what is their office number?',
       },
     
     {
         type: 'input',
         name: 'email',
-        message: 'Please add your email address: ',
+        message: 'Please add their email address: ',
       },
-   
-  ])
+      {
+        type: 'list',
+        message: 'What do you want to do next?',
+        name: 'Employee',
+        choices: ['Engineer', 'Intern', 'Manager'],
+      },
+  ]
+  if ()
+  {
+    type: 'input',
+    name: 'gitHub',
+    message: 'what is your GitHub username?',
+  },
+  
+  
+  )
   .then((data) => {
     
-    // const filename = "render.html";
+ 
     const dataRender = render(data);
+    
  
     fs.writeFile(outputPath, dataRender, (err) =>
       err ? console.log(err) : console.log('Success!')

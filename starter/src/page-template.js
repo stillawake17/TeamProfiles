@@ -58,6 +58,7 @@ const generateTeam = team => {
         `;
     };
 
+    
     const html = [];
 
     html.push(team
