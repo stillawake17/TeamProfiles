@@ -64,14 +64,28 @@ inquirer
                     type: 'input',
                     name: 'gitHub',
                     message: 'What is their Github Username?',
-                },
+                }
             ]).then((data) => {
-                const manager = new Manager(data.name, data.id,data.email,data.officeNumber);
-                console.log(manager);
-                const team = [manager];
-                team.push(manager);
-                            })
-                        } else if (answers.Employee === 'Intern') {
+                const manager = new Manager(data.name, data.id,data.email,data.officeNumber)
+                const team = [manager]
+                // const dataRender = render(data);
+                // fs.writeFile(outputPath, dataRender, (err) => {
+                //     if (err) {
+                //         console.log(err);
+                //     } else {
+                //         console.log('Success!');
+                //         const dataRender = render(html);
+                //         fs.writeFile(outputPath, dataRender, (err) => {
+                //             if (err) {
+                //                 console.log(err);
+                //             } else {
+                //                 console.log('Success!');
+                            }
+                        });
+                    }
+                });
+            });
+        } else if (answers.Employee === 'Intern') {
             inquirer.prompt([
                 {
                     type: 'input',
@@ -94,13 +108,24 @@ inquirer
                     message: 'What is the intern\s school?',
                 }
             ]).then((data) => {
-                const intern = new Intern(data.name, data.id,data.email,data.officeNumber)
+                const intern = new Manager(data.name, data.id,data.email,data.officeNumber)
                 const team = [intern]
-                const manager = new Manager(data.name, data.id,data.email,data.officeNumber);
-                console.log(intern);               
-                team.push(intern);
-                
+                // const dataRender = render(data);
+                // fs.writeFile(outputPath, dataRender, (err) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log('Success!');
+                        const dataRender = render(data);
+                        fs.writeFile(outputPath, dataRender, (err) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                console.log('Success!');
+                            }
+                        });
+                    }
                 });
-    }});
+            // });
+    //  }   });
     
-            
