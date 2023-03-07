@@ -38,12 +38,23 @@ inquirer
         {
             type: 'list',
             message: 'What do you want to do next?',
-            name: 'Employee',
-            choices: ['Engineer', 'Intern', 'Manager', 'End process'],
+            name: 'employee',
+            choices: ['Add Engineer', 'Add Intern', 'Add Manager', 'End process'],
         },
-    ])
+    ]).then((data) => {
+        const manager = new Manager(data.name, data.id,data.officeNumber,data.email,data.employee);
+        console.log(manager);
+        const team = [manager];
+        team.push(manager);
+    })
+    .then(() => {
+        /* additional code to execute after previous .then() block */
+      })
+      .then(() => {
+        /* even more code to execute after previous .then() block */
+      })
     .then(answers => {
-        if (answers.Employee === 'Engineer') {
+        if (answers.employee === 'Add Engineer') {
             inquirer.prompt([
                 {
                     type: 'input',
@@ -66,10 +77,10 @@ inquirer
                     message: 'What is their Github Username?',
                 },
             ]).then((data) => {
-                const manager = new Manager(data.name, data.id,data.email,data.officeNumber);
-                console.log(manager);
-                const team = [manager];
-                team.push(manager);
+                const engineer = new Engineer(data.name, data.id,data.email,data.officeNumber);
+                console.log(engineer);
+                const team = [engineer];
+                team.push(engineer);
                             })
                         } else if (answers.Employee === 'Intern') {
             inquirer.prompt([
@@ -96,7 +107,7 @@ inquirer
             ]).then((data) => {
                 const intern = new Intern(data.name, data.id,data.email,data.officeNumber)
                 const team = [intern]
-                const manager = new Manager(data.name, data.id,data.email,data.officeNumber);
+
                 console.log(intern);               
                 team.push(intern);
                 
