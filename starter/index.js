@@ -33,8 +33,7 @@ inquirer
         message: 'what is their office number?',
       },
     
-    {
-        type: 'input',
+    {   type: 'input',
         name: 'email',
         message: 'Please add their email address: ',
       },
@@ -42,21 +41,74 @@ inquirer
         type: 'list',
         message: 'What do you want to do next?',
         name: 'Employee',
-        choices: ['Engineer', 'Intern', 'Manager'],
+        choices: ['Engineer', 'Intern', 'Manager', 'End process'],
       },
-  ]
-  if ()
-  {
-    type: 'input',
-    name: 'gitHub',
-    message: 'what is your GitHub username?',
-  },
-  
-  
-  )
-  .then((data) => {
-    
- 
+        ]).then(answers => {
+              if (answers.Employee === 'Engineer') {
+                        inquirer.prompt([
+                              {
+                              type: 'input',
+                              name: 'name',
+                              message:'What is their name?',
+                              },
+                              {
+                                type: 'input',
+                                name: 'id',
+                                message: 'What is their ID?',
+                              },
+                              {
+                                type: 'input',
+                                name: 'email',
+                                message: 'What is their email address?',
+                              },
+                              {
+                                type: 'input',
+                                name: 'gitHub',
+                                message: 'What is their Github Username?',
+                              }
+                      ])
+                      .then((data) => {
+                        const dataRender = render(data);
+                        
+                     
+                        fs.writeFile(outputPath, dataRender, (err) =>
+                          err ? console.log(err) : console.log('Success!')
+                        );
+                      });
+           } else if (answers.Employee === 'Intern') {
+                        inquirer.prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the intern\s name?',
+        },
+        {
+          type: 'input',
+          name: 'id',
+          message: 'What is the intern\s id?',
+        },
+        {
+        type: 'input',
+        name: 'email',
+        message: 'What is the intern\s email address?',
+        },
+        {
+      type: 'input',
+      name: 'school',
+      message: 'What is the intern\s school?',
+            }
+          ]).then((data) => {
+            const dataRender = render(data);
+            
+         
+            fs.writeFile(outputPath, dataRender, (err) =>
+              err ? console.log(err) : console.log('Success!')
+            );
+          });;
+} else {
+  console.log("you have chosen to leave");
+}})
+.then((data) => {
     const dataRender = render(data);
     
  
@@ -64,5 +116,3 @@ inquirer
       err ? console.log(err) : console.log('Success!')
     );
   });
-
-
